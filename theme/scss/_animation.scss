@@ -1,0 +1,52 @@
+.swell {
+animation: swell $swell-duration $swell-loop;
+-webkit-animation: swell $swell-duration $swell-loop;
+-moz-animation: swell $swell-duration $swell-loop;
+-o-animation: swell $swell-duration $swell-loop;
+-ms-animation: swell $swell-duration $swell-loop;
+}
+
+@-keyframes swell 
+{
+    0% {transform:scale(1.0);}
+    15% {transform:scale($swell-size);}
+    30% {transform:scale(1.0);}
+    45% {transform:scale($swell-size);}
+    60% {transform:scale(1.0);}
+}
+
+@-webkit-keyframes swell 
+{
+    0% {transform:scale(1.0);}
+    15% {transform:scale($swell-size);}
+    30% {transform:scale(1.0);}
+    45% {transform:scale($swell-size);}
+    60% {transform:scale(1.0);}
+}
+
+@-moz-keyframes swell 
+{
+    0% {transform:scale(1.0);}
+    15% {transform:scale($swell-size);}
+    30% {transform:scale(1.0);}
+    45% {transform:scale($swell-size);}
+    60% {transform:scale(1.0);}
+}
+
+@-o-keyframes swell 
+{
+    0% {transform:scale(1.0);}
+    15% {transform:scale($swell-size);}
+    30% {transform:scale(1.0);}
+    45% {transform:scale($swell-size);}
+    60% {transform:scale(1.0);}
+}
+
+@-ms-keyframes swell 
+{
+    0% {transform:scale(1.0);}
+    15% {transform:scale($swell-size);}
+    30% {transform:scale(1.0);}
+    45% {transform:scale($swell-size);}
+    60% {transform:scale(1.0);}
+}

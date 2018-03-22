@@ -46,7 +46,7 @@ describe('Search Components', () => {
             expect(orderBy.id).toEqual('orderBy');
 
             var button = TestUtils.findRenderedDOMComponentWithTag(search, 'button');
-            expect(button.textContent).toEqual('search');
+            expect(button.textContent).toEqual('Search');
         })
 
     })

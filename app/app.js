@@ -5,3 +5,4 @@ import Home from './components/home.js';
 ReactDOM.render(<Home />, document.getElementById('root'));
 
 require('bootstrap/scss/bootstrap.scss');
+require('../theme/scss/main.scss');
