@@ -16,6 +16,7 @@ export default class Search extends React.Component {
         this.hotelNameChange = this.hotelNameChange.bind(this);
         this.starRatingChange = this.starRatingChange.bind(this);
         this.facilitiesChange = this.facilitiesChange.bind(this);
+        this.orderByChange = this.orderByChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -25,6 +26,10 @@ export default class Search extends React.Component {
 
     starRatingChange(event) {
         this.setState({ starRating: event.target.value });
+    }
+
+    orderByChange(event) {
+        this.setState({ orderBy: event.target.value });
     }
 
     facilitiesChange(event) {
@@ -72,7 +77,7 @@ export default class Search extends React.Component {
                     <input type="checkbox" id="pool" value="pool" onChange={this.facilitiesChange} /> <label htmlFor="pool">Pool</label>
                     <input type="checkbox" id="gym" value="gym" onChange={this.facilitiesChange} /> <label htmlFor="gym">Gym</label>
                     <br />
-                    <select id="orderBy">
+                    <select id="orderBy" value={this.state.orderBy} onChange={this.orderByChange}>
                         <option value="">Any</option>
                         <option value="ASC">Star Rating (lowest first)</option>
                         <option value="DESC">Star Rating (highest first)</option>
@@ -84,7 +89,7 @@ export default class Search extends React.Component {
                 <div>
                     {
                         this.state.searchResults !== null && this.state.searchResults.length > 0 &&
-                        this.state.searchResults.map(result => <Result result={result} key={result.Name} />)                        
+                        this.state.searchResults.map(result => <Result result={result} key={result.Name} />)
                     }
                     {
                         this.state.searchResults !== null && this.state.searchResults.length === 0 &&

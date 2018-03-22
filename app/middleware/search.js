@@ -17,6 +17,11 @@ export function searchHotels(searchParams) {
             "Name": "hotelthree",
             "StarRating": 3,
             "Facilities": []
+        },
+        {
+            "Name": "hotelfour",
+            "StarRating": 4,
+            "Facilities": []
         }
     ];
 

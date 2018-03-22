@@ -9,14 +9,15 @@ describe('Search Middleware', () => {
         request = {
             hotelName: '',
             starRating: '',
-            facilities: []
+            facilities: [],
+            orderBy: ''
         }
     })
 
     it('should return all results when default params supplied', () => {
         var response = searchHotels(request);
 
-        expect(response.searchResults.length).toEqual(3);
+        expect(response.searchResults.length).toEqual(4);
     })
 
     it('should return all matching hotels by name when hotelName param supplied', () => {
@@ -51,5 +52,29 @@ describe('Search Middleware', () => {
         var response = searchHotels(request);
 
         expect(response.searchResults.length).toEqual(1);
+    })
+
+    it('should not change order when no orderBy param supplied', () => {
+        var response = searchHotels(request);
+        expect(response.searchResults[0].StarRating).toEqual(5);
+        expect(response.searchResults[1].StarRating).toEqual(3);
+        expect(response.searchResults[2].StarRating).toEqual(3);
+        expect(response.searchResults[3].StarRating).toEqual(4);
+    })
+
+    it('should order ascending when ASC orderBy param supplied', () => {
+        var response = searchHotels(request);
+        expect(response.searchResults[0].StarRating).toEqual(3);
+        expect(response.searchResults[1].StarRating).toEqual(3);
+        expect(response.searchResults[2].StarRating).toEqual(4);
+        expect(response.searchResults[3].StarRating).toEqual(5);
+    })
+
+    it('should order descending when DESC orderBy param supplied', () => {
+        var response = searchHotels(request);
+        expect(response.searchResults[0].StarRating).toEqual(5);
+        expect(response.searchResults[1].StarRating).toEqual(4);
+        expect(response.searchResults[2].StarRating).toEqual(3);
+        expect(response.searchResults[3].StarRating).toEqual(3);
     })
 })
