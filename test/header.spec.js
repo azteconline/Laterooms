@@ -19,6 +19,6 @@ describe('Header Component', () => {
 
         var logo = TestUtils.findRenderedDOMComponentWithTag(header, 'img');
 
-        expect(logo.node.props.src).toEqual('/public/assets/laterooms_logo.png');
+        expect(logo.src).toEqual('/public/assets/laterooms_logo.png');
     })
 })
