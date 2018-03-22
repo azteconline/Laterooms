@@ -40,8 +40,17 @@ export default class Search extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log('submitted');
-        console.log(this.state);
+        var request = {
+            hotelName: this.state.hotelName,
+            starRating: this.state.starRating,
+            facilities: this.state.facilities
+        };
+        console.log(request);
+        var response = searchHotels(request);
+        console.log(response.searchResults.length);
+
+        this.setState({ searchResults: response.searchResults });
+
         event.preventDefault();
     }
 

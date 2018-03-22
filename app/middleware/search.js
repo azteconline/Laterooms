@@ -27,7 +27,7 @@ export function searchHotels(searchParams) {
     }
 
     if (searchParams.starRating !== '') {
-        results = _.where(data, { StarRating: searchParams.starRating });
+        results = _.where(data, { StarRating: parseInt(searchParams.starRating) });
     }
 
     if (searchParams.facilities.length>0) {
