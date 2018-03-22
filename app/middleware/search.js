@@ -48,7 +48,7 @@ export function searchHotels(searchParams) {
     }
 
     if (searchParams.orderBy !== '') {
-        results = _.sortBy(results, 'StarRating'); 
+        results = searchParams.orderBy == 'ASC' ? _.sortBy(results, 'StarRating') : _.sortBy(results, 'StarRating').reverse(); 
     }
 
     return {
