@@ -1,55 +1,19 @@
-﻿jest.dontMock('../app/middleware/Search.js');
-import { searchHotels } from '../app/middleware/Search.js';
+﻿import React from 'react';
+import ReactDOM from 'react-dom';
+import Search from '../app/components/search/search.js';
+import Result from '../app/components/search/result.js';
 
-describe('Search Middleware', () => {
+jest.dontMock('../app/components/search/search.js');
+jest.dontMock('../app/components/search/result.js');
 
-    var request;
-
-    beforeEach(() => {
-        request = {
-            hotelName: '',
-            starRating: '',
-            facilities: []
-        }
-    })
-    
-    it('should return all results when default params supplied', () => {
-        var response = searchHotels(request);
-
-        expect(response.searchResults.length).toEqual(3);
+describe('Search Components', () => {
+    it('should render search without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<Search />, div);
     })
 
-    it('should return all matching hotels by name when hotelName param supplied', () => {
-        request.hotelName = 'hoteltwo';
-
-        var response = searchHotels(request);
-
-        expect(response.searchResults.length).toEqual(1);
-
-        expect(response.searchResults[0].Name).toEqual('hoteltwo');
-    })
-
-    it('should return all matching hotels by rating when starRating param supplied', () => {
-        request.starRating = 3;
-
-        var response = searchHotels(request);
-
-        expect(response.searchResults.length).toEqual(2);
-    })
-
-    it('should return all matching hotels with facility when single hotel facility param supplied', () => {
-        request.facilities = ['car park'];        
-
-        var response = searchHotels(request);
-
-        expect(response.searchResults.length).toEqual(2);
-    })
-
-    it('should return all matching hotels with both facility when two facility params supplied', () => {
-        request.facilities = ['car park', 'gym']; 
-
-        var response = searchHotels(request);
-
-        expect(response.searchResults.length).toEqual(1);
+    it('should render result without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<Result />, div);
     })
 })
