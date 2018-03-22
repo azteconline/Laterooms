@@ -26,6 +26,22 @@ export function searchHotels(searchParams) {
         results = _.where(data, { Name: searchParams.hotelName });
     }
 
+    if (searchParams.starRating !== '') {
+        results = _.where(data, { StarRating: searchParams.starRating });
+    }
+
+    if (searchParams.facilities.length>0) {
+        results = _.filter(data, function (f) {
+            var noMatch=false;
+            searchParams.facilities.forEach(function (item) {
+                if (!_.contains(f.Facilities, item)) {
+                    noMatch = true;
+                }
+            });
+            return noMatch ? null:f;
+        });
+    }
+
     return {
         searchResults: results
     }
