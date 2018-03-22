@@ -28,15 +28,15 @@ export function searchHotels(searchParams) {
     var results = data;
 
     if (searchParams.hotelName !== '') {
-        results = _.where(data, { Name: searchParams.hotelName });
+        results = _.where(results, { Name: searchParams.hotelName });
     }
 
     if (searchParams.starRating !== '') {
-        results = _.where(data, { StarRating: parseInt(searchParams.starRating) });
+        results = _.where(results, { StarRating: parseInt(searchParams.starRating) });
     }
 
     if (searchParams.facilities.length>0) {
-        results = _.filter(data, function (f) {
+        results = _.filter(results, function (f) {
             var noMatch=false;
             searchParams.facilities.forEach(function (item) {
                 if (!_.contains(f.Facilities, item)) {
@@ -45,6 +45,10 @@ export function searchHotels(searchParams) {
             });
             return noMatch ? null:f;
         });
+    }
+
+    if (searchParams.orderBy !== '') {
+        results = _.sortBy(results, 'StarRating'); 
     }
 
     return {

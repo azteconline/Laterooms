@@ -56,6 +56,7 @@ describe('Search Middleware', () => {
 
     it('should not change order when no orderBy param supplied', () => {
         var response = searchHotels(request);
+
         expect(response.searchResults[0].StarRating).toEqual(5);
         expect(response.searchResults[1].StarRating).toEqual(3);
         expect(response.searchResults[2].StarRating).toEqual(3);
@@ -63,7 +64,9 @@ describe('Search Middleware', () => {
     })
 
     it('should order ascending when ASC orderBy param supplied', () => {
+        request.orderBy = 'ASC';
         var response = searchHotels(request);
+
         expect(response.searchResults[0].StarRating).toEqual(3);
         expect(response.searchResults[1].StarRating).toEqual(3);
         expect(response.searchResults[2].StarRating).toEqual(4);
@@ -71,7 +74,9 @@ describe('Search Middleware', () => {
     })
 
     it('should order descending when DESC orderBy param supplied', () => {
+        request.orderBy = 'DESC';
         var response = searchHotels(request);
+
         expect(response.searchResults[0].StarRating).toEqual(5);
         expect(response.searchResults[1].StarRating).toEqual(4);
         expect(response.searchResults[2].StarRating).toEqual(3);
