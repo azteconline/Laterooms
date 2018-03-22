@@ -27,7 +27,7 @@ describe('Search Components', () => {
             expect(hotelName.id).toEqual('hotelName');
             expect(hotelName.type).toEqual('text');
 
-            var starRating = TestUtils.findRenderedDOMComponentWithTag(search, 'select');
+            var starRating = TestUtils.scryRenderedDOMComponentsWithTag(search, 'select')[0];
             expect(starRating.id).toEqual('starRating');
 
             var carpark = TestUtils.scryRenderedDOMComponentsWithTag(search, 'input')[1];
@@ -41,6 +41,9 @@ describe('Search Components', () => {
             var gym = TestUtils.scryRenderedDOMComponentsWithTag(search, 'input')[3];
             expect(gym.id).toEqual('gym');
             expect(gym.type).toEqual('checkbox');
+
+            var orderBy = TestUtils.scryRenderedDOMComponentsWithTag(search, 'select')[1];
+            expect(orderBy.id).toEqual('orderBy');
 
             var button = TestUtils.findRenderedDOMComponentWithTag(search, 'button');
             expect(button.textContent).toEqual('search');
