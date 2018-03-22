@@ -71,7 +71,12 @@ export default class Search extends React.Component {
                     <input type="checkbox" id="carpark" value="car park" onChange={this.facilitiesChange} /> <label htmlFor="carpark">Car Park</label>
                     <input type="checkbox" id="pool" value="pool" onChange={this.facilitiesChange} /> <label htmlFor="pool">Pool</label>
                     <input type="checkbox" id="gym" value="gym" onChange={this.facilitiesChange} /> <label htmlFor="gym">Gym</label>
-
+                    <br />
+                    <select id="orderBy">
+                        <option value="">Any</option>
+                        <option value="ASC">Star Rating (lowest first)</option>
+                        <option value="DESC">Star Rating (highest first)</option>
+                    </select>
                     <br /><br />
                     <button>search</button>
                 </form>
