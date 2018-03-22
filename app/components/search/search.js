@@ -16,24 +16,39 @@ export default class Search extends React.Component {
         this.hotelNameChange = this.hotelNameChange.bind(this);
         this.starRatingChange = this.starRatingChange.bind(this);
         this.facilitiesChange = this.facilitiesChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     hotelNameChange(event) {
-        
+        this.setState({ hotelName: event.target.value });
     }
 
     starRatingChange(event) {
-        
+        this.setState({ starRating: event.target.value });
     }
 
     facilitiesChange(event) {
-       
+        var exists = _.contains(this.state.facilities, event.target.value);
+        var facilities = this.state.facilities;
+        if (!exists) {
+            facilities.push(event.target.value);
+        }
+        else {
+            facilities.splice(facilities.indexOf(event.target.value), 1);
+        }
+        this.setState({ facilities: facilities });
+    }
+
+    handleSubmit(event) {
+        console.log('submitted');
+        console.log(this.state);
+        event.preventDefault();
     }
 
     render() {
         return (
             <section>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="hotelName">Hotel Name</label>
                     <input id="hotelName" value={this.state.hotelName} type="text" onChange={this.hotelNameChange} />
                     <br />
