@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
-jest.dontMock('../app/components/Home.js');
+jest.dontMock('../app/components/home.js');
 
-import Home from '../app/components/Home.js';
+import Home from '../app/components/home.js';
 
 describe('Home Component', () => {
     it('should render without crashing', () => {
