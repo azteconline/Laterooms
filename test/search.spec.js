@@ -52,7 +52,12 @@ describe('Search Components', () => {
 
         it('should render result without crashing', () => {
             const div = document.createElement('div');
-            ReactDOM.render(<Result />, div);
+            const dummyResult = {
+                Name: 'Rob`s hotel',
+                StarRating: 5,
+                Facilities: ['gym', 'sauna']
+            }
+            ReactDOM.render(<Result result={dummyResult} />, div);
         })
 
         it('should display search result correctly', () => {
@@ -71,10 +76,10 @@ describe('Search Components', () => {
             expect(hotelName.textContent).toEqual('Rob`s hotel');
 
             var starRating = TestUtils.findRenderedDOMComponentWithTag(result, 'h4');
-            expect(starRating.textContent).toEqual('5');
+            expect(starRating.textContent).toEqual('5 star');
 
             var facilitiesList = TestUtils.findRenderedDOMComponentWithTag(result, 'ul');
-            var facilitiesItems = TestUtils.scryRenderedDOMComponentWithTag(result, 'li');
+            var facilitiesItems = TestUtils.scryRenderedDOMComponentsWithTag(result, 'li');
             expect(facilitiesItems.length).toEqual(2);
         })
     })
