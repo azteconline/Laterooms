@@ -54,5 +54,28 @@ describe('Search Components', () => {
             const div = document.createElement('div');
             ReactDOM.render(<Result />, div);
         })
+
+        it('should display search result correctly', () => {
+
+            const dummyResult = {
+                Name: 'Rob`s hotel',
+                StarRating: 5,
+                Facilities: ['gym','sauna']
+            }
+
+            var result = TestUtils.renderIntoDocument(
+                <Result result={dummyResult} />
+            );
+
+            var hotelName = TestUtils.findRenderedDOMComponentWithTag(result, 'h3');
+            expect(hotelName.textContent).toEqual('Rob`s hotel');
+
+            var starRating = TestUtils.findRenderedDOMComponentWithTag(result, 'h4');
+            expect(starRating.textContent).toEqual('5');
+
+            var facilitiesList = TestUtils.findRenderedDOMComponentWithTag(result, 'ul');
+            var facilitiesItems = TestUtils.scryRenderedDOMComponentWithTag(result, 'li');
+            expect(facilitiesItems.length).toEqual(2);
+        })
     })
 })
