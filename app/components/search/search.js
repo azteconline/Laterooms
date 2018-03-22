@@ -45,12 +45,8 @@ export default class Search extends React.Component {
             starRating: this.state.starRating,
             facilities: this.state.facilities
         };
-        console.log(request);
         var response = searchHotels(request);
-        console.log(response.searchResults.length);
-
         this.setState({ searchResults: response.searchResults });
-
         event.preventDefault();
     }
 
@@ -79,6 +75,16 @@ export default class Search extends React.Component {
                     <br /><br />
                     <button>search</button>
                 </form>
+
+                <div>
+                    {
+                        this.state.searchResults !== null && this.state.searchResults.length > 0 &&
+                        this.state.searchResults.map(result => <Result result={result} key={result.Name} />)                        
+                    }
+                    {
+                        this.state.searchResults !== null && this.state.searchResults.length === 0 &&
+                        <div>No hotels found - please try another search</div>}
+                </div>
             </section>
         );
     }
