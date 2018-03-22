@@ -48,7 +48,8 @@ export default class Search extends React.Component {
         var request = {
             hotelName: this.state.hotelName,
             starRating: this.state.starRating,
-            facilities: this.state.facilities
+            facilities: this.state.facilities,
+            orderBy: this.state.orderBy
         };
         var response = searchHotels(request);
         this.setState({ searchResults: response.searchResults });
@@ -77,6 +78,7 @@ export default class Search extends React.Component {
                     <input type="checkbox" id="pool" value="pool" onChange={this.facilitiesChange} /> <label htmlFor="pool">Pool</label>
                     <input type="checkbox" id="gym" value="gym" onChange={this.facilitiesChange} /> <label htmlFor="gym">Gym</label>
                     <br />
+                    <label htmlFor="orderBy">Order By</label>
                     <select id="orderBy" value={this.state.orderBy} onChange={this.orderByChange}>
                         <option value="">Any</option>
                         <option value="ASC">Star Rating (lowest first)</option>
